@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page - Zena Fusion</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body id="app">
+    <header>
+        <h1>{{businessName}}</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="order.html">Order</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>{{Zena fusion}}</h2>
+        <p>The beauty starts in the drink...</p>
+
+        <div class="products">
+            <div>
+                <h2>Our product list</h2>
+                <p>We offer a variety of drinks. From teas to juices, everything is found here.</p>
+            </div>
+            <div class="product-caroussel">
+                <div class="product-card" v-for="product in products" :key="product.name">
+                    <img src="Colorful logo.png" alt="product.name">
+                    <h3>{{product.name}}</h3>
+                    <p>{{product.describtion}}</p>
+                    <p class="price">{{product.price}}RMB</p>
+                    <a href="order.html"><button>Order Now</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Business Name. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

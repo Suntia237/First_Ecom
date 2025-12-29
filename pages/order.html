@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order - Zena Fusion</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body id="app">
+    <header>
+        <h1>Zena Fusion</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="order.html">Order</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Place Your Order</h2>
+        <p>Fill out the form below and we'll contact you to confirm details and arrange payment.</p>
+
+        <!-- The order form -->
+        <form @submit.prevent="submitOrder" method="POST">
+            <!-- Client Contact Info -->
+            <fieldset>
+                <legend>Your Information</legend>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" v-model="formData.name" required placeholder="Enter your name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" v-model="formData.email" required placeholder="Enter your email address">
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" v-model="formData.phone" placeholder="WhatsApp phone number" required>
+            </fieldset>
+
+            <!-- Order Details -->
+            <fieldset>
+                <legend>Order Details</legend>
+                <label for="product">Product of Interest:</label>
+                <select id="product" name="product_of_interest" v-model="formData.product">
+                    <option v-for="product in products" :key="product.name" :value="product.name">
+                        {{ product.name }}
+                    </option>
+                </select>
+
+                <label for="quantity">Quantity:</label> 
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="20" v-model="formData.quantity">
+
+                <label for="message">Special Requests or Questions:</label>
+                <textarea id="message" name="message" rows="4" v-model="formData.message"></textarea>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit" >Submit Order Request</button>
+
+            <!-- FormSubmit Configuration (hidden fields) -->
+            <input type="hidden" name="_subject" value="New Order from Website!">
+            <input type="hidden" name="_template" value="table">
+            <!-- Optional: Redirect to a "Thank You" page after submission -->
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Business Name. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
